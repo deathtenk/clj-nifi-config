@@ -1,4 +1,4 @@
-#!/usr/local/bin/clj
+#!/usr/local/bin/clojure
 
 (ns set-properties
  (:require  [clojurewerkz.propertied.properties :as p]
