@@ -8,7 +8,7 @@ java version 1.8.0 and the CLJ CLI tool.
 
 ## Usage
 
-In your script, set the environment variables as described in the nifi documentation [seen here] (https://github.com/apache/nifi/blob/master/nifi-commons/nifi-properties/src/test/resources/NiFiProperties/conf/nifi.properties)
+In your script, set the environment variables as described in the nifi documentation [seen here](https://github.com/apache/nifi/blob/master/nifi-commons/nifi-properties/src/test/resources/NiFiProperties/conf/nifi.properties)
 
 ## Example
 
