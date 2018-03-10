@@ -1,1 +1,8 @@
+*.pkcs12
+config.json
+*.old
+nifi-toolkit*
+*.jks
+*.pem
+.DS_Store
 .cpcache

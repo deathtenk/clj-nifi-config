@@ -1,3 +1,5 @@
 {:deps 
  {clojurewerkz/propertied {:mvn/version "1.3.0"}
-  environ {:mvn/version "1.1.0"}}}
+  environ  {:mvn/version "1.1.0"}
+  cheshire {:mvn/version "5.8.0"}
+  }}
