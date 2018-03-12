@@ -52,8 +52,8 @@
 (defn get-keystore []
   (sh "./nifi-toolkit/bin/tls-toolkit.sh" "client" "-c" ca-server-hostname 
                                                    "-t" ca-token 
-                                                   "-D" (str "CN=localhost,OU=NIFI")
-                                                   "--subjectAlternativeNames" (str hostname "," ipaddress) 
+                                                   "--subjectAlternativeNames" (str ipaddress "," hostname)
+                                                   "-D" (str "CN=" hostname ",OU=NIFI") 
                                                    "-T" "PKCS12"))
 
 
