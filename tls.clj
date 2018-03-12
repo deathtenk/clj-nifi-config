@@ -53,7 +53,8 @@
   (sh "./nifi-toolkit/bin/tls-toolkit.sh" "client" "-c" ca-server-hostname 
                                                    "-p" ca-server-port 
                                                    "-t" ca-token 
-                                                   "--subjectAlternativeNames" (str ipaddress "," hostname) 
+                                                   "--subjectAlternativeNames" (str ipaddress "," hostname)
+                                                   "-D" (str "CN=" hostname ",OU=NIFI") 
                                                    "-T" "PKCS12"))
 
 
