@@ -4,7 +4,8 @@
             [environ.core :refer [env]]
             [clojure.java.shell :refer [sh]]
             [cheshire.core :as json]
-            [clojurewerkz.propertied.properties :as p]))
+            [clojurewerkz.propertied.properties :as p]
+            [clojure.stacktrace :as s]))
 
 ;; CLJ_NIFI_PROPERTIES_PATH
 ;; CLJ_NIFI_KEYSTORE_CONFIG_PATH
@@ -53,7 +54,7 @@
   (sh "./nifi-toolkit/bin/tls-toolkit.sh" "client" "-c" ca-server-hostname 
                                                    "-t" ca-token 
                                                    "--subjectAlternativeNames" (str ipaddress "," hostname)
-                                                   "-D" (str "CN=" hostname ",OU=NIFI") 
+                                                   ; "-D" (str "CN=" hostname ",OU=NIFI") 
                                                    "-T" "PKCS12"))
 
 
@@ -89,12 +90,16 @@
 
 
 (defn secure-with-tls []
-  (do 
-    (download-toolkit)
-    (extract-toolkit)
-    (get-keystore)
-    (set-properties)
-    (System/exit 0)))
+  (try
+    (do 
+      (download-toolkit)
+      (extract-toolkit)
+      (get-keystore)
+      (set-properties)
+      (System/exit 0))
+    (catch Exception e
+      (println (.getMessage e))
+      (s/print-cause-trace e))))
 
 
 (secure-with-tls)
