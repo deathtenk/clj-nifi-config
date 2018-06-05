@@ -15,6 +15,9 @@
 ;; NIFI_IP_ADDRESS
 ;; NIFI_HOSTNAME
 
+(def nifi-version (or (:nifi-version env)
+                      "1.6.0"))
+
 (def nifi-properties-path (or (:clj-nifi-properties-path env) "./nifi.properties"))
 
 (def config-path (or (:clj-nifi-keystore-config-path env) 
@@ -41,7 +44,7 @@
 
 
 (defn download-toolkit []
-  (with-open [in (io/input-stream "https://archive.apache.org/dist/nifi/1.5.0/nifi-toolkit-1.5.0-bin.tar.gz")
+  (with-open [in (io/input-stream (str "https://archive.apache.org/dist/nifi/" nifi-version "/nifi-toolkit-" nifi-version "-bin.tar.gz"))
               out (io/output-stream "./nifi-toolkit.tar.gz")]
     (io/copy in out)))
 
